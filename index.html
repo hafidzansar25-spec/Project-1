@@ -1,1 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JurnalSpot - Asisten Pencari Jurnal Skripsi</title>
+    
+    <!-- Menghubungkan ke file CSS eksternal -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Font Awesome untuk ikon (opsional, untuk mempercantik tombol/input) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
 
+    <!-- NAVIGASI / HEADER -->
+    <header class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>JurnalSpot</span>
+        </div>
+        <button id="bookmarkTabBtn" class="btn-bookmark">
+            <i class="fa-solid fa-bookmark"></i> Favorit (<span id="bookmarkCount">0</span>)
+        </button>
+    </header>
+
+    <!-- KONTEN UTAMA -->
+    <main class="container">
+        
+        <!-- HERO & KOLOM PENCARIAN -->
+        <section class="hero-section">
+            <h1>Temukan Jurnal Ilmiah untuk Skripsimu</h1>
+            <p>Pencarian cepat, filter topik mudah, dan salin format sitasi otomatis dalam satu tempat.</p>
+            
+            <div class="search-bar-container">
+                <div class="input-group">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="Cari kata kunci, judul, atau nama penulis...">
+                </div>
+            </div>
+
+            <!-- FILTER & PENGURUTAN -->
+            <div class="filter-container">
+                <div class="filter-group">
+                    <label for="categoryFilter"><i class="fa-solid fa-filter"></i> Topik:</label>
+                    <select id="categoryFilter">
+                        <option value="all">Semua Topik</option>
+                        <option value="AI">Kecerdasan Buatan (AI)</option>
+                        <option value="Web">Pengembangan Web</option>
+                        <option value="Data">Data Science</option>
+                        <option value="Cybersecurity">Keamanan Siber</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="sortBy"><i class="fa-solid fa-sort"></i> Urutkan:</label>
+                    <select id="sortBy">
+                        <option value="latest">Terbaru</option>
+                        <option value="citations">Sitasi Terbanyak</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- AREA HASIL JURNAL -->
+        <section class="journal-section">
+            <div class="section-header">
+                <h2>Daftar Jurnal Ilmiah</h2>
+                <span id="journalCountText" class="badge-count">Memuat...</span>
+            </div>
+
+            <!-- Wadah kosong tempat kartu jurnal akan dimasukkan oleh JavaScript -->
+            <div id="journalGrid" class="journal-grid"></div>
+
+            <!-- Pesan jika jurnal yang dicari tidak ditemukan -->
+            <div id="noResults" class="no-results hidden">
+                <i class="fa-solid fa-folder-open"></i>
+                <p>Jurnal yang kamu cari tidak ditemukan. Coba kata kunci lain.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MODAL / JENDELA POP-UP ABSTRAK -->
+    <div id="abstractModal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <button id="closeModalBtn" class="close-btn">&times;</button>
+            <h3 id="modalTitle">Judul Jurnal</h3>
+            <p class="modal-author" id="modalAuthor">Penulis</p>
+            <hr>
+            <h4>Abstrak:</h4>
+            <p id="modalAbstractText" class="modal-abstract-text">Isi abstrak akan muncul di sini...</p>
+            
+            <div class="citation-box">
+                <h4>Format Sitasi (APA):</h4>
+                <div class="citation-content">
+                    <code id="modalCitationText">...</code>
+                    <button id="copyCitationBtn" class="btn-copy">
+                        <i class="fa-regular fa-copy"></i> Salin
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOTIFIKASI TOAST -->
+    <div id="toast" class="toast hidden">
+        <span id="toastMessage">Notifikasi berhasil!</span>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>&copy; 2026 JurnalSpot - Proyek Latihan Frontend Pemula.</p>
+    </footer>
+
+    <!-- Menghubungkan ke file JavaScript eksternal -->
+    <script src="script.js"></script>
+</body>
+</html>
